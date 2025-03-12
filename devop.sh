@@ -124,5 +124,16 @@ else
   echo "✅ k9s already installed."
 fi
 
+# AWS CLI
+if ! command -v aws &> /dev/null; then
+  echo "☁️ Installing AWS CLI v2..."
+  curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o awscliv2.zip
+  unzip awscliv2.zip
+  sudo ./aws/install
+  rm -rf aws awscliv2.zip
+else
+  echo "✅ AWS CLI already installed."
+fi
+
 echo "✅ Setup complete. Restart your terminal or run 'exec zsh'."
 echo "💡 Run 'p10k configure' to personalize your Powerlevel10k prompt."
